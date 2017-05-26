@@ -1,0 +1,21 @@
+<a href="/">Home</a>
+<h1><%= @user.first_name %> <%= @user.last_name %>'s Playlist</h1>
+
+<table>
+
+    <tr>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>Times Added</th>
+    </tr>
+
+    <% @playlist.each do |play| %>
+    <tr>
+        <td><a href="/songs/<%= play.song.id %>/show"><%= play.song.artist %></td>
+        <td><%= play.song.title %></td>
+        <td><%= rand(1..10) %></td>
+    </tr>
+    <% end %>
+
+
+</table>

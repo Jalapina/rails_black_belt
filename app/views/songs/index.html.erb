@@ -1,0 +1,31 @@
+<h1>Hello <%= @user.first_name %>!</h1>
+
+<h3>All the songs in our hub:</h3>
+
+<table>
+
+    <tr>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>Times Added</th>
+        <th> Add to playlist</th>
+    </tr>
+    <% @songs.each do |song| %>
+        <tr>
+            <td><a href="/songs/<%= song.id %>/show"><%= song.artist %></td>
+            <td><%= song.title %></td>
+            <td><%= song.added %></td>
+            <td><a href="/songs/<%= song.id %>/playlists/create" >Add</a></td>
+        </tr>
+    <% end %>
+
+</table>
+
+<hr>
+<h2>Add a song:</h2>
+<form action="/songs/create" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="text" placeholder="Title" name="title">
+    <input type="text" placeholder="Artist" name="artist">
+    <input type="submit" value="Add song">
+</form>
